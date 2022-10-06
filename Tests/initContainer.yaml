@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: red
+  labels:
+    app: MyApp
+spec:
+  containers:
+  - name: red-container
+    image: redis
+  initContainers:
+  - name: init-myservice
+    image: busybox:1.28
+    command: ['sh', '-c', 'echo The app is running! && sleep 20']
